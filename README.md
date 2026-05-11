@@ -1,71 +1,81 @@
-# codementor-ai README
+# CodeMentor AI
 
-This is the README for your extension "codementor-ai". After writing up a brief description, we recommend including the following sections.
+CodeMentor AI is a VS Code extension project (TypeScript) currently set up with a starter command and activation flow.
 
-## Features
+## Current Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- Shows a notification: `Hello World from codementor-ai!`
+- Contributes command: `codementor-ai.helloWorld` (`Hello World`)
+- Activates on startup (`onStartupFinished`)
 
-For example if there is an image subfolder under your extension project workspace:
+## Project Structure
 
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+```text
+src/
+	extension.ts              # Extension entry point (activate/deactivate)
+	test/extension.test.ts    # Sample extension test
+package.json                # Extension manifest and scripts
+tsconfig.json               # TypeScript config
+```
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+- Node.js 18+ (recommended: latest LTS)
+- VS Code 1.118.0 or newer
 
-## Extension Settings
+## Install Dependencies
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+```bash
+npm install
+```
 
-For example:
+## Build
 
-This extension contributes the following settings:
+```bash
+npm run compile
+```
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+For continuous build while developing:
 
-## Known Issues
+```bash
+npm run watch
+```
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+## Run the Extension Locally
 
-## Release Notes
+1. Open this folder in VS Code.
+2. Run `npm run watch` (or ensure build is up to date).
+3. Press `F5` to open an **Extension Development Host** window.
+4. You should see a toast notification: `Hello World from codementor-ai!`.
+5. Open Command Palette (`Ctrl+Shift+P`) and run `Hello World`.
 
-Users appreciate release notes as you update your extension.
+## Lint and Test
 
-### 1.0.0
+```bash
+npm run lint
+npm test
+```
 
-Initial release of ...
+## GitHub Repository
 
-### 1.0.1
+This project is connected to:
 
-Fixed issue #.
+`https://github.com/Thanu-Venu/codementor-ai.git`
 
-### 1.1.0
+Common workflow:
 
-Added features X, Y, and Z.
+```bash
+git add .
+git commit -m "your message"
+git push
+```
 
----
+## Next Improvements
 
-## Following extension guidelines
+- Replace starter Hello World behavior with real AI assistant features.
+- Add extension settings in `contributes.configuration`.
+- Add command-level tests and activation tests.
 
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
+## License
 
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+Add your preferred license file (for example, MIT) before publishing publicly.
