@@ -19,27 +19,40 @@ export function activate(context: vscode.ExtensionContext) {
 		const text = editor.document.getText();
 		const lines = text.split("\n");
 
-		let loopCount = 0;
+		let maxDepth = 0;
+		const indentationStack: number[] = [];
+
 		for (const line of lines) {
 			const trimmed = line.trim();
 			if (
 				trimmed.startsWith('for') ||
 				trimmed.startsWith('while')
 			) {
-				loopCount++;
+				const indentation = line.length - line.trimStart().length;
+
+				while (indentationStack.length > 0 && indentation <= indentationStack[indentationStack.length - 1])
+				{
+					indentationStack.pop();
+				}
+
+				indentationStack.push(indentation);
+
+				if (indentationStack.length > maxDepth) {
+					maxDepth = indentationStack.length;
+				}
 			}
 		}
 
 		let complexity = 'O(1)';
 
-		if (loopCount === 1) {
+		if (maxDepth === 1) {
 			complexity = 'O(n)';
 		}
-		else if (loopCount === 2) {
+		else if (maxDepth === 2) {
 			complexity = "O(n^2)";
 
 		}
-		else if (loopCount === 3) {
+		else if (maxDepth === 3) {
 			complexity = 'O(n^3)';
 		}
 
