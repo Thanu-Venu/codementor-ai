@@ -17,11 +17,20 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 
 		const text = editor.document.getText();
+		const lines = text.split("\n");
 
-		console.log(text);
+		let loopCount = 0;
+		for (const line of lines) {
+			const trimmed = line.trim();
+			if (
+				trimmed.startsWith('for') ||
+				trimmed.startsWith('while')
+			) {
+				loopCount++;
+			}
+		}
 
-
-		vscode.window.showInformationMessage(`code length: ${text.length}`);
+		vscode.window.showInformationMessage(`Detected: ${loopCount} loop(s)`);
 	});
 }
 
