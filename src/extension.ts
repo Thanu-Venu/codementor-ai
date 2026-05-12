@@ -30,8 +30,24 @@ export function activate(context: vscode.ExtensionContext) {
 			}
 		}
 
-		vscode.window.showInformationMessage(`Detected: ${loopCount} loop(s)`);
+		let complexity = 'O(1)';
+
+		if (loopCount === 1) {
+			complexity = 'O(n)';
+		}
+		else if (loopCount === 2) {
+			complexity = "O(n^2)";
+
+		}
+		else if (loopCount === 3) {
+			complexity = 'O(n^3)';
+		}
+
+		vscode.window.showInformationMessage(`Estimated time complexity: ${complexity}`);
+
 	});
+
+
 }
 
 // This method is called when your extension is deactivated
